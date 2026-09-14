@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "5a0e3683-6767-4a97-8460-7080232670a4",
+		"name": "oauth2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10833032",
+		"_collection_link": "https://lunar-crater-162804.postman.co/workspace/Demo~035e7579-6544-4180-8ff4-ffaf42392f90/collection/10833032-5a0e3683-6767-4a97-8460-7080232670a4?action=share&source=collection_link&creator=10833032"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"grant_type\": \"password\", \"username\": \"alice\", \"password\": \"password123\", \"client_id\": \"cli-001\", \"client_secret\": \"super-secret-2026\", \"scopes\": [\"payments:read\"]}&{\"grant_type\": \"client_credentials\", \"client_id\": \"cli-001\", \"client_secret\": \"super-secret-2026\", \"scopes\": [\"payments:read\"]}&{\"token\": \"YOUR_ACCESS_TOKEN_HERE\"}&{\"token\": \"YOUR_ACCESS_TOKEN_HERE\", \"token_type_hint\": \"access_token\"}&{\"refresh_token\": \"YOUR_REFRESH_TOKEN_HERE\"}&{\"token\": \"YOUR_TOKEN_HERE\", \"token_type_hint\": \"access_token\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"token"
+					]
+				},
+				"description": "Generated from cURL: curl -v -X POST http://localhost:8080/token \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json\" \\\n  -d '{\"grant_type\": \"password\", \"username\": \"alice\", \"password\": \"password123\", \"client_id\": \"cli-001\", \"client_secret\": \"super-secret-2026\", \"scopes\": [\"payments:read\"]}'\n\ncurl -v -X POST http://localhost:8080/token \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json\" \\\n  -d '{\"grant_type\": \"client_credentials\", \"client_id\": \"cli-001\", \"client_secret\": \"super-secret-2026\", \"scopes\": [\"payments:read\"]}'\n\ncurl -v -X POST http://localhost:8080/token/password \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json\" \\\n  -d '{\"token\": \"YOUR_ACCESS_TOKEN_HERE\"}'\n\ncurl -v -X POST http://localhost:8080/introspect \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json\" \\\n  -d '{\"token\": \"YOUR_ACCESS_TOKEN_HERE\", \"token_type_hint\": \"access_token\"}'\n\ncurl -v -X POST http://localhost:8080/token/refresh \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json\" \\\n  -d '{\"refresh_token\": \"YOUR_REFRESH_TOKEN_HERE\"}'\n\ncurl -v -X POST http://localhost:8080/revoke \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"token\": \"YOUR_TOKEN_HERE\", \"token_type_hint\": \"access_token\"}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"grant_type\": \"client_credentials\",\n    \"client_id\": \"cli-001\",\n    \"client_secret\": \"super-secret-2026\",\n    \"scopes\": [\n        \"payments:read\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"token"
+					]
+				},
+				"description": "Generated from cURL: curl -v -X POST http://localhost:8080/token \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json\" \\\n  -d '{\"grant_type\": \"client_credentials\", \"client_id\": \"cli-001\", \"client_secret\": \"super-secret-2026\", \"scopes\": [\"payments:read\"]}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/token/password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\": \"eyJ0eXAiOiJBVCIsImFsZyI6IkhTMjU2In0.eyJpc3MiOiJtaW5pLWF1dGgiLCJhdWQiOiJwYXltZW50cy1hcGkiLCJzdWIiOiJ1c2VyLTAwMSIsImNsaWVudF9pZCI6ImNsaS0wMDEiLCJzY29wZXMiOlsicGF5bWVudHM6cmVhZCJdLCJyb2xlcyI6WyJwYXltZW50czpyZWFkIl0sImlhdCI6MTc4OTMzMjc4NDI4NCwiZXhwIjoxNzg5MzMzNjg0Mjg0LCJqdGkiOiIzODdlMGU0Ny1jZTcxLTQ4OWYtYWU3Ny03YTM0MDNlN2U1YWIifQ.1NHYB-Tq3Oa2RnGaXZvc-PC_lE5ZI4wjBgkVCwnrs7k\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/token/password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"token",
+						"password"
+					]
+				},
+				"description": "Generated from cURL: curl -v -X POST http://localhost:8080/token/password \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json\" \\\n  -d '{\"token\": \"YOUR_ACCESS_TOKEN_HERE\"}'"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/introspect",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\": \"eyJ0eXAiOiJBVCIsImFsZyI6IkhTMjU2In0.eyJpc3MiOiJtaW5pLWF1dGgiLCJhdWQiOiJwYXltZW50cy1hcGkiLCJzdWIiOiJ1c2VyLTAwMSIsImNsaWVudF9pZCI6ImNsaS0wMDEiLCJzY29wZXMiOlsicGF5bWVudHM6cmVhZCJdLCJyb2xlcyI6WyJwYXltZW50czpyZWFkIl0sImlhdCI6MTc4OTMzMTk3NDY3MiwiZXhwIjoxNzg5MzMyODc0NjcyLCJqdGkiOiJiMDE1ZWRmZi1hOTA1LTRiNjYtOTVhZC1lZTIyMDIyYmQyMjMifQ.3LLxZPqg3NNsfYyEOejJs8tsO1KdiRMzyqma3DYGzXU\", \"token_type_hint\": \"access_token\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/introspect",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"introspect"
+					]
+				},
+				"description": "Generated from cURL: curl -v -X POST http://localhost:8080/introspect \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json\" \\\n  -d '{\"token\": \"YOUR_ACCESS_TOKEN_HERE\", \"token_type_hint\": \"access_token\"}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/token/refresh",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"grant_type\":\"refresh_token\",\n  \"refresh_token\":\"eyJ0eXAiOiJSVCIsImFsZyI6IkhTMjU2In0.eyJ0eXAiOiJSVCIsInJlZnJlc2hpZCI6IjY3ODEzNjg4LWFiZjMtNDZiNC1hODYyLTg0NTE3NjhlNjYyYiIsImV4cCI6MTc4OTc2NDc2NX0.6vdPCpGWC67anIazdauWcwYf6Qm1tW9QNVieNxjITc0\",\n  \"client_id\":\"cli-001\",\n  \"client_secret\":\"super-secret-2026\"\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/token/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"token",
+						"refresh"
+					]
+				},
+				"description": "Generated from cURL: curl -v -X POST http://localhost:8080/token/refresh \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json\" \\\n  -d '{\"refresh_token\": \"YOUR_REFRESH_TOKEN_HERE\"}'"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/revoke",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"eyJ0eXAiOiJBVCIsImFsZyI6IkhTMjU2In0.eyJpc3MiOiJtaW5pLWF1dGgiLCJhdWQiOiJwYXltZW50cy1hcGkiLCJzdWIiOiJ1c2VyLTAwMSIsImNsaWVudF9pZCI6ImNsaS0wMDEiLCJzY29wZXMiOlsicGF5bWVudHM6cmVhZCJdLCJyb2xlcyI6WyJwYXltZW50czpyZWFkIl0sImlhdCI6MTc4OTMzMjc4NDI4NCwiZXhwIjoxNzg5MzMzNjg0Mjg0LCJqdGkiOiIzODdlMGU0Ny1jZTcxLTQ4OWYtYWU3Ny03YTM0MDNlN2U1YWIifQ.1NHYB-Tq3Oa2RnGaXZvc-PC_lE5ZI4wjBgkVCwnrs7k\",\n    \"token_type_hint\": \"access_token\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/revoke",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"revoke"
+					]
+				},
+				"description": "Generated from cURL: \ncurl -v -X POST http://localhost:8080/revoke \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"token\": \"YOUR_TOKEN_HERE\", \"token_type_hint\": \"access_token\"}'"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/payments",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJBVCIsImFsZyI6IkhTMjU2In0.eyJpc3MiOiJtaW5pLWF1dGgiLCJhdWQiOiJwYXltZW50cy1hcGkiLCJzdWIiOiJ1c2VyLTAwMSIsImNsaWVudF9pZCI6ImNsaS0wMDEiLCJzY29wZXMiOlsicGF5bWVudHM6cmVhZCJdLCJyb2xlcyI6WyJwYXltZW50czpyZWFkIl0sImlhdCI6MTc4OTM0NzE0NywiZXhwIjoxNzg5MzQ4MDQ3LCJqdGkiOiJlMGM0NzI1Mi01ZWEyLTQyNzEtODdjYS01ZTUwMGZjNmE2N2MifQ.VN7CxNkuNW9TfIZyKHLUZmWbDYJknZYV3xeLctuR5pw"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/api/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"payments"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:8080/api/payments \\\n  -H \"Authorization: Bearer ВСТАВЬ_СЮДА_ACCESS_TOKEN\" \\\n  -H \"Accept: application/json\""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/payments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJBVCIsImFsZyI6IkhTMjU2In0.eyJpc3MiOiJtaW5pLWF1dGgiLCJhdWQiOiJwYXltZW50cy1hcGkiLCJzdWIiOiJ1c2VyLTAwMSIsImNsaWVudF9pZCI6ImNsaS0wMDEiLCJzY29wZXMiOlsicGF5bWVudHM6cmVhZCJdLCJyb2xlcyI6WyJwYXltZW50czpyZWFkIl0sImlhdCI6MTc4OTM0NzE0NywiZXhwIjoxNzg5MzQ4MDQ3LCJqdGkiOiJlMGM0NzI1Mi01ZWEyLTQyNzEtODdjYS01ZTUwMGZjNmE2N2MifQ.VN7CxNkuNW9TfIZyKHLUZmWbDYJknZYV3xeLctuR5pw"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"amount\": 500, \"currency\": \"RUB\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"payments"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8080/api/payments \\\n  -H \"Authorization: Bearer ВСТАВЬ_СЮДА_ACCESS_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"amount\": 500, \"currency\": \"RUB\"}'"
+			},
+			"response": []
+		}
+	]
+}

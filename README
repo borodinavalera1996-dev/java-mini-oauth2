@@ -1,0 +1,6 @@
+Приложение запускается c AuthApp
+Для refresh токена выбран Вариант B: подписанный JSON с typ:"RT" и refresh_id внутри.
+
+Ресурсное приложение запускается с ResourceApp и флагом -Dserver.port=8081
+
+постман тесты лежат в collection.json
